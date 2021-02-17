@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KuC-iw-XDM">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Foodics-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Resturent_Menu" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DMS-OZ-HlD">
-                                <rect key="frame" x="20" y="20" width="770" height="855"/>
+                                <rect key="frame" x="20" y="70" width="770" height="805"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mxG-To-mPL">
                                     <size key="itemSize" width="128" height="128"/>
@@ -74,8 +74,46 @@
                             <constraint firstItem="DMS-OZ-HlD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="owf-ZU-sKe"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Foodics" id="fgw-LY-hbz"/>
+                    <connections>
+                        <segue destination="tLg-cC-5Vh" kind="show" id="cm0-aP-f8l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1288.148148148148" y="76.111111111111114"/>
+        </scene>
+        <!--Products-->
+        <scene sceneID="u5C-hu-FyO">
+            <objects>
+                <viewController id="tLg-cC-5Vh" customClass="ProductsViewController" customModule="Resturent_Menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lib-wP-r0X">
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lLj-xj-mqc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Products" id="GdZ-IP-f6R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYk-SS-qrr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1990" y="76"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qv7-mW-t0a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KuC-iw-XDM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6EL-ae-tOg">
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2ng-AY-veS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1U-y3-Cdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="531.11111111111109" y="76.111111111111114"/>
         </scene>
