@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import RealmSwift
+//import RealmSwift
 
-class Category: Object, Codable {
+class Category: /*Object,*/ Codable {
 
 
     @objc var id: String?

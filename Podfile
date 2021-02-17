@@ -10,7 +10,7 @@ target 'Resturent Menu' do
   pod 'Alamofire'
   pod 'SDWebImage'
   pod 'ProgressHUD'
-  pod 'RealmSwift'
+  #pod 'RealmSwift'
 
   target 'Resturent MenuTests' do
     inherit! :search_paths
