@@ -6,13 +6,23 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Product: Codable {
+class Product: Object, Codable {
 
 
-    let ID: Int?
-    let title: String?
-    let logo: String?
+    @objc dynamic var id: String?
+    @objc dynamic var name: String?
+    @objc dynamic var image: String?
+    
+    @objc dynamic var category: Category?
+
+}
+
+struct products: Codable {
+  
+  let data: [Product]
   
 
+    
 }

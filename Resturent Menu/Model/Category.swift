@@ -6,14 +6,14 @@
 //
 
 import Foundation
-//import RealmSwift
+import RealmSwift
 
-class Category: /*Object,*/ Codable {
+class Category: Object, Codable {
 
 
-    @objc var id: String?
-    @objc var name: String?
-    @objc var image: String?
+    @objc dynamic var id: String?
+    @objc dynamic var name: String?
+    @objc dynamic var image: String?
   
 
 }

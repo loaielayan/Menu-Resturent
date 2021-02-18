@@ -1,6 +1,11 @@
 PODS:
   - Alamofire (5.4.1)
   - ProgressHUD (13.4)
+  - Realm (10.6.0):
+    - Realm/Headers (= 10.6.0)
+  - Realm/Headers (10.6.0)
+  - RealmSwift (10.6.0):
+    - Realm (= 10.6.0)
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
@@ -8,19 +13,24 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ProgressHUD
+  - RealmSwift
   - SDWebImage
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - ProgressHUD
+    - Realm
+    - RealmSwift
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   ProgressHUD: 137a7fc677487c5581668f4490563124fb35c232
+  Realm: 1ef421d4581513400ad4f8bd39c8157f3266c62e
+  RealmSwift: f80216fb8334b01ccf526e4f2dd5ff0da61863a2
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
 
-PODFILE CHECKSUM: 2d341a45962a076bda445ddda9e4709ed900935b
+PODFILE CHECKSUM: ad66606d301bac87952655425486f16224eff358
 
 COCOAPODS: 1.10.1

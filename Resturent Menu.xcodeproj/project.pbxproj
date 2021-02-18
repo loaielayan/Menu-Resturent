@@ -24,6 +24,8 @@
 		F97FF12125DD64F600824900 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF12025DD64F600824900 /* Constants.swift */; };
 		F97FF12625DD659D00824900 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF12525DD659D00824900 /* RequestManager.swift */; };
 		F97FF13625DD8DD500824900 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF13525DD8DD500824900 /* ProductsViewController.swift */; };
+		F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */; };
+		F97FF15C25DE95D600824900 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		F97FF12025DD64F600824900 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F97FF12525DD659D00824900 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		F97FF13525DD8DD500824900 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 				F97FF05825DD4CDF00824900 /* Assets.xcassets */,
 				F97FF05D25DD4CDF00824900 /* Info.plist */,
 				F97FF12525DD659D00824900 /* RequestManager.swift */,
+				F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */,
+				F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */,
 			);
 			path = "Resturent Menu";
 			sourceTree = "<group>";
@@ -458,10 +464,12 @@
 			files = (
 				F97FF05425DD4CDA00824900 /* ViewController.swift in Sources */,
 				F97FF05025DD4CDA00824900 /* AppDelegate.swift in Sources */,
+				F97FF15C25DE95D600824900 /* ProductCollectionViewCell.swift in Sources */,
 				F97FF09025DD4DD600824900 /* Product.swift in Sources */,
 				F97FF12625DD659D00824900 /* RequestManager.swift in Sources */,
 				F97FF09525DD4F8F00824900 /* MainViewController.swift in Sources */,
 				F97FF12125DD64F600824900 /* Constants.swift in Sources */,
+				F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */,
 				F97FF13625DD8DD500824900 /* ProductsViewController.swift in Sources */,
 				F97FF05225DD4CDA00824900 /* SceneDelegate.swift in Sources */,
 				F97FF08B25DD4DC800824900 /* Category.swift in Sources */,
