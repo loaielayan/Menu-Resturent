@@ -9,7 +9,8 @@ import UIKit
 import ProgressHUD
 import RealmSwift
 
-class MainViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class MainViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, ShowProduct {
+    
 
     
     
@@ -32,12 +33,16 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
             self.collectionView.reloadData()
         }
         
-        
+                
         
 
     }
     
-    
+    func show(product: Product) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "PopUp") as! PopUpViewController
+        vc.product = product
+        self.present(vc, animated: true, completion: nil)
+    }
     
     @IBAction func previousButton(_ sender: Any) {
     }
@@ -152,6 +157,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowProducts"{
             if let des = segue.destination as? ProductsViewController{
+                des.delegate = self
                 des.selectedCategory = self.selectedCategory
             }
         }
@@ -160,5 +166,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     
 
 }
+
+
 
 

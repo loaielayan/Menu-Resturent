@@ -14,6 +14,7 @@ class Product: Object, Codable {
     @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var image: String?
+    @objc dynamic var price: Double
     
     @objc dynamic var category: Category?
 

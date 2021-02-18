@@ -26,6 +26,7 @@
 		F97FF13625DD8DD500824900 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF13525DD8DD500824900 /* ProductsViewController.swift */; };
 		F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */; };
 		F97FF15C25DE95D600824900 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */; };
+		F97FF16C25DEE1F200824900 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF16B25DEE1F200824900 /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		F97FF13525DD8DD500824900 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		F97FF16B25DEE1F200824900 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopUpViewController.swift; path = "Resturent Menu/PopUpViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 		F97FF08625DD4D7100824900 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F97FF16B25DEE1F200824900 /* PopUpViewController.swift */,
 				F97FF13525DD8DD500824900 /* ProductsViewController.swift */,
 				F97FF05325DD4CDA00824900 /* ViewController.swift */,
 				F97FF09425DD4F8F00824900 /* MainViewController.swift */,
@@ -469,6 +472,7 @@
 				F97FF12625DD659D00824900 /* RequestManager.swift in Sources */,
 				F97FF09525DD4F8F00824900 /* MainViewController.swift in Sources */,
 				F97FF12125DD64F600824900 /* Constants.swift in Sources */,
+				F97FF16C25DEE1F200824900 /* PopUpViewController.swift in Sources */,
 				F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */,
 				F97FF13625DD8DD500824900 /* ProductsViewController.swift in Sources */,
 				F97FF05225DD4CDA00824900 /* SceneDelegate.swift in Sources */,
