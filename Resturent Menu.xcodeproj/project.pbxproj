@@ -27,6 +27,7 @@
 		F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */; };
 		F97FF15C25DE95D600824900 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */; };
 		F97FF16C25DEE1F200824900 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF16B25DEE1F200824900 /* PopUpViewController.swift */; };
+		F97FF17225E0174E00824900 /* CategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF17125E0174C00824900 /* CategoryResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		F97FF16B25DEE1F200824900 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopUpViewController.swift; path = "Resturent Menu/PopUpViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F97FF17125E0174C00824900 /* CategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryResponse.swift; path = "Resturent Menu/CategoryResponse.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 		F97FF08225DD4D6A00824900 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F97FF17125E0174C00824900 /* CategoryResponse.swift */,
 				F97FF08A25DD4DC800824900 /* Category.swift */,
 				F97FF08F25DD4DD600824900 /* Product.swift */,
 			);
@@ -473,6 +476,7 @@
 				F97FF09525DD4F8F00824900 /* MainViewController.swift in Sources */,
 				F97FF12125DD64F600824900 /* Constants.swift in Sources */,
 				F97FF16C25DEE1F200824900 /* PopUpViewController.swift in Sources */,
+				F97FF17225E0174E00824900 /* CategoryResponse.swift in Sources */,
 				F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */,
 				F97FF13625DD8DD500824900 /* ProductsViewController.swift in Sources */,
 				F97FF05225DD4CDA00824900 /* SceneDelegate.swift in Sources */,
@@ -663,7 +667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.foodics.Resturent-Menu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -683,7 +687,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.foodics.Resturent-Menu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

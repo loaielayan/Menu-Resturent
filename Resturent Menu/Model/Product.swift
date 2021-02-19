@@ -23,6 +23,7 @@ class Product: Object, Codable {
 struct products: Codable {
   
   let data: [Product]
+    let meta: Meta
   
 
     
