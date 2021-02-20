@@ -50,6 +50,13 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
 
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.collectionView.layoutSubviews()
+        self.collectionView.setNeedsDisplay()
+        //xValue = self.collectionView.bounds.size.width
+    }
+    
     func show(product: Product) {
         let vc = self.storyboard?.instantiateViewController(identifier: "PopUp") as! PopUpViewController
         vc.product = product
@@ -237,7 +244,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width - 20
+        let width = collectionView.bounds.size.width - 20
         let height = collectionView.frame.size.height
         return CGSize(width: width / 4.0 , height: width / 5.0)
     }
