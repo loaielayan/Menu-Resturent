@@ -4,10 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Resturent Menu 1.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Resturent Menu.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>8</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F97FF04B25DD4CDA00824900</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F97FF06125DD4CDF00824900</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F97FF06C25DD4CE000824900</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

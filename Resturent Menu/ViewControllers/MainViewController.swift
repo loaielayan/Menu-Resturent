@@ -72,6 +72,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
 
         // update the new position acquired
         self.lastContentOffset = scrollView.contentOffset.x
+        print(self.lastContentOffset)
     }
     
     
@@ -87,7 +88,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
         if currentSection > 0{
             currentSection = currentSection - 1
             //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
-            self.lastContentOffset = self.lastContentOffset - collectionView.frame.size.width
+            self.lastContentOffset = self.lastContentOffset - 780//collectionView.bounds.size.width //- 10
             self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
             
         }
@@ -95,10 +96,11 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     
     @IBAction func nextButton(_ sender: Any) {
         print(nestedArray.count)
-        if currentSection < nestedArray.count{
+        if currentSection < nestedArray.count - 1{
             currentSection = currentSection + 1
             //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
-            self.lastContentOffset = self.lastContentOffset + collectionView.frame.size.width
+            self.lastContentOffset = self.lastContentOffset + 780//collectionView.bounds.size.width //- 10
+            print(self.lastContentOffset)
             self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
             
         }
@@ -285,10 +287,10 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5
+//        return 0
 //    }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5
+//        return 0
 //    }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        return UIEdgeInsets.zero
