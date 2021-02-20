@@ -262,8 +262,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        return UIEdgeInsets.zero
 //    }
-    
-  
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

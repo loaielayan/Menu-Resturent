@@ -26,7 +26,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         
         //collectionViewLayout.minimumLineSpacing = 0
-        collectionView.collectionViewLayout = CenterCellCollectionViewFlowLayout()
+        //collectionView.collectionViewLayout = CenterCellCollectionViewFlowLayout()
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -66,6 +66,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         if currentSection < nestedArray.count - 1{
             currentSection = currentSection + 1
+            print(currentSection)
             self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
 
         }
@@ -92,7 +93,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         
         
-        print(nestedArray)
+        print(nestedArray.count)
         collectionView.reloadData()
         
     }
@@ -109,31 +110,34 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductCollectionViewCell
         cell.productLabel.text = nestedArray[indexPath.section][indexPath.row].name
         cell.productImageView.sd_setImage(with: URL(string: nestedArray[indexPath.section][indexPath.row].image ?? "")) { (image, error, cacheType, url) in
-            
+
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let width = collectionView.frame.size.width //- 20
+        
+        
+        let width = collectionView.frame.size.width - 20
         let height = collectionView.frame.size.height
         return CGSize(width: width / 4.0 , height: width / 5.0)
+        
 
+        
     }
     
     
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets.zero
+//    }
 
     
     

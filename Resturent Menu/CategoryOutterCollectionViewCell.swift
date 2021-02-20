@@ -23,9 +23,9 @@ class CategoryOutterCollectionViewCell: UICollectionViewCell, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductCollectionViewCell
         cell.productLabel.text = data![indexPath.row].name
-        cell.productImageView.sd_setImage(with: URL(string: data![indexPath.row].image ?? "")) { (image, error, cacheType, url) in
-            
-        }
+//        cell.productImageView.sd_setImage(with: URL(string: data![indexPath.row].image ?? "")) { (image, error, cacheType, url) in
+//            
+//        }
         return cell
     }
     
