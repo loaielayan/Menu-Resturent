@@ -53,8 +53,10 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 //
 //        }
         if currentSection > 0{
-            //currentSection = currentSection - 1
-            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
+            currentSection = currentSection - 1
+            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
+            self.lastContentOffset = self.lastContentOffset - collectionView.bounds.size.width
+            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
         }
     }
     
@@ -64,10 +66,12 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        self.collectionView.scrollRectToVisible(CGRect(x: xValue!, y: 0, width: self.collectionView.frame.size.width, height: self.collectionView.frame.size.height), animated: true)
 //        xValue = xValue! + self.collectionView.frame.size.width
         
-        if currentSection < nestedArray.count - 1{
-            //currentSection = currentSection + 1
-            print(currentSection)
-            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
+        if currentSection < nestedArray.count{
+            currentSection = currentSection + 1
+            //print(currentSection)
+            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
+            self.lastContentOffset = self.lastContentOffset + collectionView.bounds.size.width
+            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
 
         }
     }

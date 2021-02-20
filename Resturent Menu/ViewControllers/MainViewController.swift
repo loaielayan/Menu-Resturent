@@ -86,15 +86,20 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     @IBAction func previousButton(_ sender: Any) {
         if currentSection > 0{
             currentSection = currentSection - 1
-            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
+            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
+            self.lastContentOffset = self.lastContentOffset - collectionView.frame.size.width
+            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
+            
         }
     }
     
     @IBAction func nextButton(_ sender: Any) {
         print(nestedArray.count)
-        if currentSection < nestedArray.count - 1{
+        if currentSection < nestedArray.count{
             currentSection = currentSection + 1
-            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
+            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
+            self.lastContentOffset = self.lastContentOffset + collectionView.frame.size.width
+            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
             
         }
     }
