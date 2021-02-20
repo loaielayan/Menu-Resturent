@@ -10,6 +10,7 @@
 		1983B61D9EAD5753DA663EA1 /* Pods_Resturent_Menu_Resturent_MenuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31158C060114746A6C3DBA3 /* Pods_Resturent_Menu_Resturent_MenuUITests.framework */; };
 		5BD917DEAF4DEA5027E0C7E1 /* Pods_Resturent_Menu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2E7016E547AD090303FFB4 /* Pods_Resturent_Menu.framework */; };
 		EC7F02CF13C22CB6839BFEB7 /* Pods_Resturent_MenuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7429BEC3AA99B6828418BF2 /* Pods_Resturent_MenuTests.framework */; };
+		F94E7A2725E06C7100256CDB /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94E7A2625E06C7100256CDB /* CenterCellCollectionViewFlowLayout.swift */; };
 		F97FF05025DD4CDA00824900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF04F25DD4CDA00824900 /* AppDelegate.swift */; };
 		F97FF05225DD4CDA00824900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF05125DD4CDA00824900 /* SceneDelegate.swift */; };
 		F97FF05425DD4CDA00824900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF05325DD4CDA00824900 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		F97FF15C25DE95D600824900 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */; };
 		F97FF16C25DEE1F200824900 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF16B25DEE1F200824900 /* PopUpViewController.swift */; };
 		F97FF17225E0174E00824900 /* CategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF17125E0174C00824900 /* CategoryResponse.swift */; };
+		F97FF17A25E0559000824900 /* CategoryOutterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FF17925E0559000824900 /* CategoryOutterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		B31158C060114746A6C3DBA3 /* Pods_Resturent_Menu_Resturent_MenuUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Resturent_Menu_Resturent_MenuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E10ADE363B524A8D6FA6B3 /* Pods-Resturent MenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Resturent MenuTests.release.xcconfig"; path = "Target Support Files/Pods-Resturent MenuTests/Pods-Resturent MenuTests.release.xcconfig"; sourceTree = "<group>"; };
 		E7429BEC3AA99B6828418BF2 /* Pods_Resturent_MenuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Resturent_MenuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F94E7A2625E06C7100256CDB /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		F97FF04C25DD4CDA00824900 /* Resturent Menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Resturent Menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97FF04F25DD4CDA00824900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F97FF05125DD4CDA00824900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 		F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		F97FF16B25DEE1F200824900 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopUpViewController.swift; path = "Resturent Menu/PopUpViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F97FF17125E0174C00824900 /* CategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryResponse.swift; path = "Resturent Menu/CategoryResponse.swift"; sourceTree = SOURCE_ROOT; };
+		F97FF17925E0559000824900 /* CategoryOutterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOutterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +174,9 @@
 				F97FF05D25DD4CDF00824900 /* Info.plist */,
 				F97FF12525DD659D00824900 /* RequestManager.swift */,
 				F97FF15325DE939900824900 /* CategoryCollectionViewCell.swift */,
+				F97FF17925E0559000824900 /* CategoryOutterCollectionViewCell.swift */,
 				F97FF15B25DE95D600824900 /* ProductCollectionViewCell.swift */,
+				F94E7A2625E06C7100256CDB /* CenterCellCollectionViewFlowLayout.swift */,
 			);
 			path = "Resturent Menu";
 			sourceTree = "<group>";
@@ -479,7 +485,9 @@
 				F97FF17225E0174E00824900 /* CategoryResponse.swift in Sources */,
 				F97FF15425DE939900824900 /* CategoryCollectionViewCell.swift in Sources */,
 				F97FF13625DD8DD500824900 /* ProductsViewController.swift in Sources */,
+				F97FF17A25E0559000824900 /* CategoryOutterCollectionViewCell.swift in Sources */,
 				F97FF05225DD4CDA00824900 /* SceneDelegate.swift in Sources */,
+				F94E7A2725E06C7100256CDB /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				F97FF08B25DD4DC800824900 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

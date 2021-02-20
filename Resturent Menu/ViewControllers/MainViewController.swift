@@ -60,7 +60,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     @IBAction func previousButton(_ sender: Any) {
         if currentSection > 0{
             currentSection = currentSection - 1
-            self.collectionView.scrollToItem(at: IndexPath(row: 1, section: currentSection), at: .left, animated: true)
+            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
         }
     }
     
@@ -68,7 +68,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
         print(nestedArray.count)
         if currentSection < nestedArray.count - 1{
             currentSection = currentSection + 1
-            self.collectionView.scrollToItem(at: IndexPath(row: 1, section: currentSection), at: .right, animated: true)
+            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
             
         }
     }
