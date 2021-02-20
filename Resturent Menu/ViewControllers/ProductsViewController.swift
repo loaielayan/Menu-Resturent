@@ -53,7 +53,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 //
 //        }
         if currentSection > 0{
-            currentSection = currentSection - 1
+            //currentSection = currentSection - 1
             self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
         }
     }
@@ -65,11 +65,27 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        xValue = xValue! + self.collectionView.frame.size.width
         
         if currentSection < nestedArray.count - 1{
-            currentSection = currentSection + 1
+            //currentSection = currentSection + 1
             print(currentSection)
             self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
 
         }
+    }
+    
+    private var lastContentOffset: CGFloat = 0
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset > scrollView.contentOffset.x) {
+            // move left
+            self.currentSection = self.currentSection - 1
+        }
+        else if (self.lastContentOffset < scrollView.contentOffset.x) {
+           // move rigt
+            
+            self.currentSection = self.currentSection + 1
+        }
+
+        // update the new position acquired
+        self.lastContentOffset = scrollView.contentOffset.x
     }
     
     var nestedArray = [[Product]]()

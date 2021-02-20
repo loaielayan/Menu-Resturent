@@ -57,6 +57,25 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
         //xValue = self.collectionView.bounds.size.width
     }
     
+
+    private var lastContentOffset: CGFloat = 0
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset > scrollView.contentOffset.x) {
+            // move left
+            self.currentSection = self.currentSection - 1
+        }
+        else if (self.lastContentOffset < scrollView.contentOffset.x) {
+           // move rigt
+            
+            self.currentSection = self.currentSection + 1
+        }
+
+        // update the new position acquired
+        self.lastContentOffset = scrollView.contentOffset.x
+    }
+    
+    
+    
     func show(product: Product) {
         let vc = self.storyboard?.instantiateViewController(identifier: "PopUp") as! PopUpViewController
         vc.product = product
