@@ -27,6 +27,12 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         //collectionViewLayout.minimumLineSpacing = 0
         //collectionView.collectionViewLayout = CenterCellCollectionViewFlowLayout()
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 4
+        layout.minimumInteritemSpacing = 4
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -41,8 +47,12 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.collectionView.layoutSubviews()
-        self.collectionView.setNeedsDisplay()
+        DispatchQueue.main.async {
+            self.collectionView.layoutSubviews()
+            self.collectionView.setNeedsDisplay()
+            self.collectionView.reloadData()
+        }
+
         //xValue = self.collectionView.bounds.size.width
     }
     
@@ -52,12 +62,18 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        if xValue! > self.collectionView.bounds.size.width{
 //
 //        }
+//        if currentSection > 0{
+//            currentSection = currentSection - 1
+////            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
+//            self.lastContentOffset = self.lastContentOffset - 750//collectionView.bounds.size.width - 25 //- 10
+//            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
+//        }
         if currentSection > 0{
             currentSection = currentSection - 1
-//            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
-            self.lastContentOffset = self.lastContentOffset - 750//collectionView.bounds.size.width - 25 //- 10
-            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
+            dataSet = nestedArray[currentSection]
+            collectionView.reloadData()
         }
+        
     }
     
     
@@ -66,34 +82,43 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        self.collectionView.scrollRectToVisible(CGRect(x: xValue!, y: 0, width: self.collectionView.frame.size.width, height: self.collectionView.frame.size.height), animated: true)
 //        xValue = xValue! + self.collectionView.frame.size.width
         
+//        if currentSection < nestedArray.count - 1{
+//            currentSection = currentSection + 1
+//            //print(currentSection)
+////            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
+//            self.lastContentOffset = self.lastContentOffset + 750//collectionView.bounds.size.width - 25//- 10
+//            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
+////            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: currentSection), at: .centeredHorizontally, animated: true)
+//
+//        }
+        
         if currentSection < nestedArray.count - 1{
             currentSection = currentSection + 1
-            //print(currentSection)
-//            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
-            self.lastContentOffset = self.lastContentOffset + 750//collectionView.bounds.size.width - 25//- 10
-            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
-
+            dataSet = nestedArray[currentSection]
+            collectionView.reloadData()
         }
+        
     }
     
-    private var lastContentOffset: CGFloat = 0
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if (self.lastContentOffset > scrollView.contentOffset.x) {
-            // move left
-            self.currentSection = self.currentSection - 1
-        }
-        else if (self.lastContentOffset < scrollView.contentOffset.x) {
-           // move rigt
-            
-            self.currentSection = self.currentSection + 1
-        }
-
-        // update the new position acquired
-        self.lastContentOffset = scrollView.contentOffset.x
-        print(scrollView.contentOffset.x)
-    }
+//    private var lastContentOffset: CGFloat = 0
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        if (self.lastContentOffset > scrollView.contentOffset.x) {
+//            // move left
+//            self.currentSection = self.currentSection - 1
+//        }
+//        else if (self.lastContentOffset < scrollView.contentOffset.x) {
+//           // move rigt
+//
+//            self.currentSection = self.currentSection + 1
+//        }
+//
+//        // update the new position acquired
+//        self.lastContentOffset = scrollView.contentOffset.x
+//        print(scrollView.contentOffset.x)
+//    }
     
     var nestedArray = [[Product]]()
+    var dataSet = [Product]()
     func populateNestedArray(array: [Product])
     {
         
@@ -115,22 +140,23 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         
         print(nestedArray.count)
+        dataSet = nestedArray[0]
         collectionView.reloadData()
         
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return nestedArray.count
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return nestedArray.count
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return nestedArray[section].count //return products.count
+        return dataSet.count//nestedArray[section].count //return products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductCollectionViewCell
-        cell.productLabel.text = nestedArray[indexPath.section][indexPath.row].name
-        cell.productImageView.sd_setImage(with: URL(string: nestedArray[indexPath.section][indexPath.row].image ?? "")) { (image, error, cacheType, url) in
+        cell.productLabel.text = dataSet[indexPath.row].name
+        cell.productImageView.sd_setImage(with: URL(string: dataSet[indexPath.row].image ?? "")) { (image, error, cacheType, url) in
 
         }
         
@@ -139,10 +165,13 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        let width = floor( (collectionView.frame.size.width - 20) / 4.0 )
+        let height = floor( ( (collectionView.frame.size.height) / 5.0) - 20)
+        return CGSize(width: width  , height: height )
         
-        let width = collectionView.frame.size.width - 20
-        let height = collectionView.frame.size.height
-        return CGSize(width: width / 4.0 , height: width / 5.0)
+//        let width = collectionView.frame.size.width - 20
+//        let height = collectionView.frame.size.height
+//        return CGSize(width: width / 4.0 , height: width / 5.0)
         
 
         
@@ -165,7 +194,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         self.navigationController?.popViewController(animated: true)
-        self.delegate?.show(product: nestedArray[indexPath.section][indexPath.row])
+        self.delegate?.show(product: dataSet[indexPath.row])
     }
     
     //

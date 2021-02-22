@@ -29,51 +29,58 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        //collectionViewLayout.minimumLineSpacing = 0
-        //collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        //collectionViewLayout.itemSize = CGSize(width: 300, height: 300)
-        page = 1
-        productPage = 1
-        
-        if realm.objects(Category.self).count == 0 {
+        DispatchQueue.main.async {
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
+            //collectionViewLayout.minimumLineSpacing = 0
+            //collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            //collectionViewLayout.itemSize = CGSize(width: 300, height: 300)
+            self.page = 1
+            self.productPage = 1
             
-            getCategories(pageNumber: page)
-            
-        }else{
-            //print(realm.objects(Category.self).filter("isRelatedToProduct == false").count)
-            self.populateNestedArray(array: Array(realm.objects(Category.self).filter("isRelatedToProduct == false")))
-            self.collectionView.reloadData()
+            if self.realm.objects(Category.self).count == 0 {
+                
+                self.getCategories(pageNumber: self.page)
+                
+            }else{
+                //print(realm.objects(Category.self).filter("isRelatedToProduct == false").count)
+                self.populateNestedArray(array: Array(self.realm.objects(Category.self).filter("isRelatedToProduct == false")))
+                //self.collectionView.reloadData()
+            }
         }
+
 
 
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.collectionView.layoutSubviews()
-        self.collectionView.setNeedsDisplay()
+        DispatchQueue.main.async {
+            self.collectionView.layoutSubviews()
+            self.collectionView.setNeedsDisplay()
+            self.collectionView.reloadData()
+        }
+
         //xValue = self.collectionView.bounds.size.width
     }
     
 
-    private var lastContentOffset: CGFloat = 0
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if (self.lastContentOffset > scrollView.contentOffset.x) {
-            // move left
-            self.currentSection = self.currentSection - 1
-        }
-        else if (self.lastContentOffset < scrollView.contentOffset.x) {
-           // move rigt
-            
-            self.currentSection = self.currentSection + 1
-        }
-
-        // update the new position acquired
-        self.lastContentOffset = scrollView.contentOffset.x
-        print(self.lastContentOffset)
-    }
+//    private var lastContentOffset: CGFloat = 0
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        if (self.lastContentOffset > scrollView.contentOffset.x) {
+//            // move left
+//            self.currentSection = self.currentSection - 1
+//        }
+//        else if (self.lastContentOffset < scrollView.contentOffset.x) {
+//           // move rigt
+//
+//            self.currentSection = self.currentSection + 1
+//        }
+//
+//        // update the new position acquired
+//        self.lastContentOffset = scrollView.contentOffset.x
+//        print(self.lastContentOffset)
+//    }
     
     
     
@@ -84,25 +91,78 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     }
     
     var currentSection = 0
+    var dataSet = [Category]()
+    
+    var nestedArray = [[Category]]()
+    
+    func populateNestedArray(array: [Category])
+    {
+//        var numberOfInnerArrays = 0
+//        if array.count % 20 == 0{
+//            numberOfInnerArrays = array.count / 20
+//        }else{
+//            numberOfInnerArrays = (array.count / 20) + 1
+//        }
+        var counter = 0
+        var innerArray = [Category]()
+        for (index,item) in array.enumerated()
+        {
+            innerArray.append(item)
+            counter = counter + 1
+            if counter == 20 || index == array.endIndex - 1{
+                nestedArray.append(innerArray)
+                innerArray.removeAll()
+                counter = 0
+            }
+            
+        
+
+            
+        }
+
+
+        
+        print(nestedArray.count)
+        dataSet = nestedArray[0]
+        collectionView.reloadData()
+        
+    }
+    
     @IBAction func previousButton(_ sender: Any) {
+        
+        
+//        if currentSection > 0{
+//            currentSection = currentSection - 1
+//            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
+//            self.lastContentOffset = self.lastContentOffset - 780//collectionView.bounds.size.width //- 10
+//            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
+//
+//        }
+        
         if currentSection > 0{
             currentSection = currentSection - 1
-            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .left, animated: true)
-            self.lastContentOffset = self.lastContentOffset - 780//collectionView.bounds.size.width //- 10
-            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
-            
+            dataSet = nestedArray[currentSection]
+            collectionView.reloadData()
         }
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        print(nestedArray.count)
+//        print(nestedArray.count)
+//        print(currentSection)
+//        if currentSection < nestedArray.count - 1 {
+//            currentSection = currentSection + 1
+//
+//            self.lastContentOffset = self.lastContentOffset + 780
+//            print(self.lastContentOffset)
+//            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
+//
+//
+//        }
+        
         if currentSection < nestedArray.count - 1{
             currentSection = currentSection + 1
-            //self.collectionView.scrollToItem(at: IndexPath(row: 0, section: currentSection), at: .right, animated: true)
-            self.lastContentOffset = self.lastContentOffset + 780//collectionView.bounds.size.width //- 10
-            print(self.lastContentOffset)
-            self.collectionView.setContentOffset(CGPoint(x: lastContentOffset, y: 0.0), animated: true)
-            
+            dataSet = nestedArray[currentSection]
+            collectionView.reloadData()
         }
     }
     
@@ -153,7 +213,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
                     }else{
                         print(self.realm.objects(Category.self).count)
                         self.populateNestedArray(array: Array(self.realm.objects(Category.self)) )
-                        self.collectionView.reloadData()
+                        //self.collectionView.reloadData()
                         self.populateProducts(pageNumber: self.productPage)
                     }
                     
@@ -214,49 +274,20 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
     }
     
-    var nestedArray = [[Category]]()
+
     
-    func populateNestedArray(array: [Category])
-    {
-//        var numberOfInnerArrays = 0
-//        if array.count % 20 == 0{
-//            numberOfInnerArrays = array.count / 20
-//        }else{
-//            numberOfInnerArrays = (array.count / 20) + 1
-//        }
-        var counter = 0
-        var innerArray = [Category]()
-        for (index,item) in array.enumerated()
-        {
-            innerArray.append(item)
-            counter = counter + 1
-            if counter == 20 || index == array.endIndex - 1{
-                nestedArray.append(innerArray)
-                innerArray.removeAll()
-                counter = 0
-            }
-
-            
-        }
-
-
-        
-        print(nestedArray)
-        
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-
-        return nestedArray.count
-
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//
+//        return nestedArray.count
+//
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //let totalNumberOfObjects = realm.objects(Category.self).filter("isRelatedToProduct == false").count
 
         
-        return nestedArray[section].count//totalNumberOfObjects
+        return dataSet.count//nestedArray[section].count//totalNumberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -265,14 +296,14 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
 //        cell.layer.borderWidth = 0.5
 //        cell.layer.cornerRadius = 5
         //let indexCount = indexPath.row + (20 * indexPath.section )
-        cell.categoryLabel.text = nestedArray[indexPath.section][indexPath.row].name//realm.objects(Category.self).filter("isRelatedToProduct == false")[indexPath.row].name
+        cell.categoryLabel.text = dataSet[indexPath.row].name//realm.objects(Category.self).filter("isRelatedToProduct == false")[indexPath.row].name
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.size.width - 20
-        let height = collectionView.frame.size.height
-        return CGSize(width: width / 4.0 , height: width / 5.0)
+        let width = floor( (collectionView.frame.size.width  - 20) / 4.0 )
+        let height = floor( ( (collectionView.frame.size.height) / 5.0) - 20)
+        return CGSize(width: width  , height: height )
     }
     
     
@@ -280,7 +311,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate, UICollectio
     var selectedCategory : Category?
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //DispatchQueue.main.async {
-        self.selectedCategory = nestedArray[indexPath.section][indexPath.row] //self.realm.objects(Category.self)[indexPath.row]
+        self.selectedCategory = dataSet[indexPath.row] //self.realm.objects(Category.self)[indexPath.row]
             self.performSegue(withIdentifier: "ShowProducts", sender: self)
         //}
 
